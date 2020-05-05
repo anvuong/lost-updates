@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   development: {
     dialect: "sqlite",
@@ -12,7 +14,8 @@ module.exports = {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     host: process.env.DB_HOSTNAME,
-    dialect: 'mysql',
-    use_env_variable: 'DATABASE_URL'
-  }
+    dialect: 'mariadb',
+    // use_env_variable: 'DATABASE_URL'
+  },
+  logging: false
 };
