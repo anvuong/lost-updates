@@ -4,7 +4,7 @@ const models = require('../models');
 const genCode = nanoid.customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 15);
 
 const insertUsers = async () => {
-  const usersNum = 1000000;
+  const usersNum = 10;
   const usersCount = await models.User.count();
   if (usersCount >= usersNum) {
     console.log(`There are ${usersCount} users in database right now, no need to insert anymore.`);
