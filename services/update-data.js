@@ -9,12 +9,9 @@ const updateName = async (userId, name) => {
     await models.sequelize.transaction({
       isolationLevel: Transaction.ISOLATION_LEVELS.REPEATABLE_READ
     }, async (t) => {
-      await models.User.update({
-        username: name,
-      }, {
-        where: { id: userId },
-        transaction: t
-      });
+      const user = await models.User.findByPk(userId, { transaction: t });
+      user.username = name;
+      await user.save({ transaction: t });
     });
     return { userId, name, result: 'OK' }
   } catch (error) {
